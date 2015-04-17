@@ -1,0 +1,10 @@
+{
+	"name": "Informer by Informerly 1.0",
+	"version": "1.0",
+	"manifest_version": 2,
+	"description": "The best way to view articles on Informerly.",
+	
+	"chrome_url_overrider": {
+		"newtab": "index.html"
+	}
+}
