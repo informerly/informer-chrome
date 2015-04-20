@@ -6,5 +6,11 @@
 	
 	"chrome_url_overrides": {
 		"newtab": "index.html"
-	}
+	},
+	
+	"permissions": [
+		"tabs",
+		"storage",
+		"<all_urls>"
+	]
 }
