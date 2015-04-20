@@ -4,7 +4,7 @@
 	"manifest_version": 2,
 	"description": "The best way to view articles on Informerly.",
 	
-	"chrome_url_overrider": {
+	"chrome_url_overrides": {
 		"newtab": "index.html"
 	}
 }
