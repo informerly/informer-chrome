@@ -58,7 +58,7 @@ $(document).ready(function() {
 			},
 			success: function(data) {
 				for (var i = 0; i < data.count; i++) {
-					$(".feeds").append("<a target='_blank' href='" + data.links[i].url +"'><p>" + data.links[i].title +"</a><br><small>" + data.links[i].source +" | " + data.links[i].reading_time +" min read | <button class='button' id='" + data.links[i].id +"'>Bookmark</button></small><br></p>");					
+					$(".feeds").append("<a target='_blank' href='" + data.links[i].url +"'><p>" + data.links[i].title +"</a><br><small>" + data.links[i].source +" | " + data.links[i].reading_time +" min read | <button class='button' id='" + data.links[i].id +"'><i class='fa fa-bookmark'></i></button></small><br></p>");					
 				}
 			}
 		});
@@ -88,7 +88,9 @@ $(document).ready(function() {
 	
 	$(document).on('click', 'button', function() {
 		var button = $(this);
+		var icon = button.children();
 		var link_id = $(this).attr("id");
+		console.log(icon.css('color'));
 		$.ajax({
 			type: "POST",
 			url: SERVER_BOOKMARKS_URL,
@@ -100,10 +102,10 @@ $(document).ready(function() {
 			},
 			success: function(data) {
 				console.log(data);
-				if (button.text() == "Bookmark") {
-					button.text("Bookmarked");
+				if (icon.css('color') == "rgb(255, 0, 0)") {
+					icon.css('color', "rgb(0, 255, 0)");
 				} else {
-					button.text("Bookmark");
+					icon.css('color', "rgb(255, 0, 0)");
 				}
 			}
 		});
