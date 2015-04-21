@@ -19,10 +19,8 @@ $(document).ready(function() {
 			success: function(data) {
 				if (data.success) {
 					$('p').text("You're Logged In");
-					console.log(data);
 					
 					var auth_token = data.auth_token;
-					console.log(auth_token);
 					
 					$.ajax({
 						type: "GET",
@@ -34,9 +32,8 @@ $(document).ready(function() {
 							content: true
 						},
 						success: function(data) {
-							console.log(data.links);
 							for (var i = 0; i < 20; i++) {
-								$(".feeds").prepend("<a href='" + data.links[i].url +"'><p>" + data.links[i].title +"</p></a>");
+								$(".feeds").prepend("<a href='" + data.links[i].url +"'><p>" + data.links[i].title +"</p></a><br><small>" + data.links[i].source +" | " + data.links[i].reading_time +" min read</small>");
 								
 							}
 						}
