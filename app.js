@@ -9,6 +9,7 @@ $(document).ready(function() {
 		if (auth_token) {
 			$('p').text("You're Logged In");
 			showFeeds();
+			$('.login').hide();
 		}
 	});
 		
