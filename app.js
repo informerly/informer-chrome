@@ -53,8 +53,7 @@ $(document).ready(function() {
 				content: true
 			},
 			success: function(data) {
-				for (var i = 0; i < 20; i++) {
-					console.log(data);
+				for (var i = 0; i < data.count; i++) {
 					$(".feeds").prepend("<a target='_blank' href='" + data.links[i].url +"'><p>" + data.links[i].title +"</a><br><small>" + data.links[i].source +" | " + data.links[i].reading_time +" min read</small><br></p>");					
 				}
 			}
