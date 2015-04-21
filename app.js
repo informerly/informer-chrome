@@ -58,7 +58,7 @@ $(document).ready(function() {
 			},
 			success: function(data) {
 				for (var i = 0; i < data.count; i++) {
-					$(".feeds").append("<a target='_blank' href='" + data.links[i].url +"'><p>" + data.links[i].title +"</a><br><small>" + data.links[i].source +" | " + data.links[i].reading_time +" min read | <button class='" + data.links[i].id +"'>Bookmark</button></small><br></p>");					
+					$(".feeds").append("<a target='_blank' href='" + data.links[i].url +"'><p>" + data.links[i].title +"</a><br><small>" + data.links[i].source +" | " + data.links[i].reading_time +" min read | <button class='button' id='" + data.links[i].id +"'>Bookmark</button></small><br></p>");					
 				}
 			}
 		});
@@ -85,4 +85,27 @@ $(document).ready(function() {
 			}
 		});
 	}
+	
+	$(document).on('click', 'button', function() {
+		var button = $(this);
+		var link_id = $(this).attr("id");
+		$.ajax({
+			type: "POST",
+			url: SERVER_BOOKMARKS_URL,
+			dataType: 'json',
+			data: {
+				"auth_token": auth_token,
+				"client_id": "alk2jdlkjxx4",
+				"link_id": link_id
+			},
+			success: function(data) {
+				console.log(data);
+				if (button.text() == "Bookmark") {
+					button.text("Bookmarked");
+				} else {
+					button.text("Bookmark");
+				}
+			}
+		});
+	});
 })
