@@ -57,8 +57,13 @@ $(document).ready(function() {
 				content: true
 			},
 			success: function(data) {
+				console.log(data.links);
 				for (var i = 0; i < data.count; i++) {
-					$(".feeds").append("<a target='_blank' href='" + data.links[i].url +"'><p>" + data.links[i].title +"</a><br><small>" + data.links[i].source +" | " + data.links[i].reading_time +" min read | <button class='button' id='" + data.links[i].id +"'><i class='fa fa-bookmark'></i></button></small><br></p>");					
+					$(".feeds").append("<a target='_blank' href='" + data.links[i].url +"'><p>" + data.links[i].title +"</a><br><small>" + data.links[i].source +" | " + data.links[i].reading_time +" min read | <button class='button' id='" + data.links[i].id +"'><i class='fa fa-bookmark'></i></button></small><br></p>");
+					var icon = $(".button").children();
+					if (data.links[i].bookmarked == true) {
+						icon.css('color', "rgb(0, 255, 0)");
+					}					
 				}
 			}
 		});
@@ -74,12 +79,15 @@ $(document).ready(function() {
 				"client_id": "alk2jdlkjxx4"
 			},
 			success: function(data) {
-				console.log(data);
 				if (data.count == 0) {
 					$(".bookmarks").append("<p>You do not currently have any bookmarks.</p>");
 				} else {
 					for (var i = 0; i < data.count; i++) {
-						$(".bookmarks").append("<a target='_blank' href='" + data.links[i].url +"'><p>" + data.links[i].title +"</a><br><small>" + data.links[i].source +" | " + data.links[i].reading_time +" min read</small><br></p>");
+						$(".bookmarks").append("<a target='_blank' href='" + data.links[i].url +"'><p>" + data.links[i].title +"</a><br><small>" + data.links[i].source +" | " + data.links[i].reading_time +" min read | <button class='button' id='" + data.links[i].id +"'><i class='fa fa-bookmark'></i></button></small><br></p>");
+						var icon = $(".button").children();
+						if (data.links[i].bookmarked == true) {
+							icon.css('color', "rgb(0, 255, 0)");
+						}
 					}
 				}
 			}
@@ -90,7 +98,6 @@ $(document).ready(function() {
 		var button = $(this);
 		var icon = button.children();
 		var link_id = $(this).attr("id");
-		console.log(icon.css('color'));
 		$.ajax({
 			type: "POST",
 			url: SERVER_BOOKMARKS_URL,
@@ -101,7 +108,6 @@ $(document).ready(function() {
 				"link_id": link_id
 			},
 			success: function(data) {
-				console.log(data);
 				if (icon.css('color') == "rgb(255, 0, 0)") {
 					icon.css('color', "rgb(0, 255, 0)");
 				} else {
