@@ -1,6 +1,30 @@
 body {
-	text-align: center;
+/* 	text-align: center; */
 	font-family: "Open Sans", sans-serif;
+	margin: 0;
+}
+
+.navigation {
+	background-color: #f8f8f8;
+	border-color: #e7e7e7;
+	position: fixed;
+	width: 100%;
+	z-index: 9999;
+	top: 0;
+}
+
+.navigation img {
+	width: 9em;
+}
+
+.links li {
+	display: inline;
+	padding: 1.5em;
+}
+
+.links li a {
+	color: #777;
+	font-weight: normal;
 }
 
 .button {
