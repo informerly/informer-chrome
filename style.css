@@ -27,6 +27,15 @@ body {
 	font-weight: normal;
 }
 
+h1 {
+	text-align: center;
+	padding-top: 2em;
+}
+
+body > p {
+	text-align: center;
+}
+
 .button {
 	border-style: none;
 	background-color: white;
@@ -41,4 +50,9 @@ a {
 	text-decoration: none;
 	font-weight: bold;
 	font-size: 18px;
+}
+
+.feeds, .bookmarks {
+	padding-top: 3em;
+	padding-left: 4.8em;
 }
