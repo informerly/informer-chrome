@@ -1,5 +1,6 @@
 body {
 	text-align: center;
+	font-family: "Open Sans", sans-serif;
 }
 
 .button {
@@ -9,4 +10,11 @@ body {
 
 .button i {
 	color: red;
+}
+
+a {
+	color: #002B5C;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 18px;
 }
