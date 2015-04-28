@@ -116,4 +116,15 @@ $(document).ready(function() {
 			}
 		});
 	});
+	
+	$(document).on('click', 'li', function() {
+		var type = $(this).attr("id");
+		if (type == "bookmarks") {
+			$('.feeds').hide();
+			$('.bookmarks').fadeIn();
+		} else {
+			$('.bookmarks').hide();
+			$('.feeds').fadeIn();
+		}
+	});
 })
